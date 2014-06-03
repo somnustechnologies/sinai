@@ -5,7 +5,7 @@
   <artifactId>sinai-web</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>sinai-web Maven Webapp</name>
+  <name>Sinai</name>
   <properties>
      <org.springframework.version>4.0.5.RELEASE</org.springframework.version>
   </properties>
