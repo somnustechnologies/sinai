@@ -3,7 +3,7 @@
 <html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-      <title>Museo Nacional de la Estampa</title>
+      <title>Sistema Integral de Administracion Iztacalco</title>
       <%@ include file="/jsp/common/_includes.jsp"%>
       <%@ include file="/jsp/common/_pageHeaders.jsp"%>
       

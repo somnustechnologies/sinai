@@ -19,9 +19,9 @@
    </bean>
    
    <!--::::::::::::::::::::::::::::::: interceptors :::::::::::::::::::::::::::::::-->   
-    <mvc:interceptors>    
-        <bean class="gob.df.sds.sinai.web.view.security.RequestInterceptor"/>
-    </mvc:interceptors>
+<!--     <mvc:interceptors>     -->
+<!--         <bean class="gob.df.sds.sinai.web.view.security.RequestInterceptor"/> -->
+<!--     </mvc:interceptors> -->
 
 
    <!--::::::::::::::::::::::::::::::: Controllers :::::::::::::::::::::::::::::::-->
@@ -34,6 +34,9 @@
    
    <bean class="gob.df.sds.sinai.web.view.administration.UserAdministrationController">
         <property name="service" ref="userService" />
+   </bean>
+   
+   <bean class="gob.df.sds.sinai.web.view.operation.AffiliateManagementController">
    </bean>
 
 </beans>

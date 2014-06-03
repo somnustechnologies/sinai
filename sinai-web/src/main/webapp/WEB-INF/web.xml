@@ -17,7 +17,18 @@
     <servlet-name>SinaWeb</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  
+    <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>any</web-resource-name>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>*</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
   <welcome-file-list>
-    <welcome-file>jsp/security/index.jsp</welcome-file>
+    <welcome-file>jsp/layout/container.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
