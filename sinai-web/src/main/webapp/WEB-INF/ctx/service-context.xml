@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+       
+      <bean id="encryptionService" class="gob.df.sds.sinai.web.service.security.impl.EncryptionServiceImpl">
+         <property name="algorithm" value="SHA-1" />
+       </bean>
+       
+       <bean id="loginService" class="gob.df.sds.sinai.web.service.security.impl.LoginServiceImpl">
+           <property name="dao" ref="loginDAO" />
+           <property name="encrypter" ref="encryptionService" />
+       </bean>
+       
+       <bean id="userService" class="gob.df.sds.sinai.web.service.administration.impl.UserAdminServiceImpl">
+           <property name="dao" ref="userDAO" />
+           <property name="encrypter" ref="encryptionService" />
+       </bean>
+  
+</beans>

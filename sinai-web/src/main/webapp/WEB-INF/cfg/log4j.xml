@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+  <!--#####################################################################-->
+  <!--#########################   A P E N D E R S #########################-->
+  <!--#####################################################################-->
+  <!--::::::::::::::::::::::: Root Console Appender :::::::::::::::::::::::-->
+  <appender name="CONSOLE"
+  class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+      value="%d ::: %p ::: %C{1}.%M(%L) ::: %m%n" />
+    </layout>
+  </appender>
+  
+  <!--::::::::::::::::::::::: File Appender ::::::::::::::::::::::-->
+  <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="file" value="logs/SystemOut.log" />
+    <param name="append" value="true" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d ::: %p ::: %C{1}.%M(%L) ::: %m%n" />
+    </layout>
+    <filter class="org.apache.log4j.filter.LevelRangeFilter">
+        <param name="LevelMin" value="DEBUG"/>
+        <param name="LevelMax" value="WARN"/>
+    </filter>
+  </appender>
+  
+  <appender name="FILE_ERROR" class="org.apache.log4j.RollingFileAppender">
+    <param name="file" value="logs/indicium/error.log" />
+    <param name="MaxFileSize" value="10MB"/>
+    <param name="MaxBackupIndex" value="3"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d ::: %p ::: %C{1}.%M(%L) ::: %m%n" />
+    </layout>
+    <filter class="org.apache.log4j.filter.LevelRangeFilter">
+        <param name="LevelMin" value="ERROR"/>
+        <param name="LevelMax" value="FATAL"/>
+    </filter>
+  </appender>
+  
+  <!--#####################################################################-->
+  <!--########################### DEFAULT LEVELS ##########################-->
+  <!--#####################################################################-->
+  <!--::::::::::::::::::::::::::::::: Apache ::::::::::::::::::::::::::::::-->
+  <logger name="org.apache">
+    <level value="DEBUG" />
+  </logger>
+  <!--::::::::::::::::::::::::::::::: Spring ::::::::::::::::::::::::::::::-->
+  <logger name="org.springframework">
+    <level value="DEBUG" />
+  </logger>
+  
+  <!--#####################################################################-->
+  <!--############################# CATEGORIES ############################-->
+  <!--#####################################################################-->
+  <!--:::::::::::::::::::::::::::::: Indicium :::::::::::::::::::::::::::::-->
+  <category name="com.telcel.sds.m2k.monitor.web" additivity="false">
+    <appender-ref ref="FILE" />
+    <appender-ref ref="FILE_ERROR" />
+    <appender-ref ref="CONSOLE" />
+  </category>
+  
+  <!--#####################################################################-->
+  <!--################################ ROOT ###############################-->
+  <!--#####################################################################-->
+  <!--:::::::::::::::::::::::::::::::: Root :::::::::::::::::::::::::::::::-->
+  <root>
+    <level value="INFO" />
+    <appender-ref ref="CONSOLE" />
+  </root>
+  
+</log4j:configuration>

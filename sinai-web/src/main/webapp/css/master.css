@@ -1,0 +1,284 @@
+/*******************************************************************************
+*                                 Components                                   *
+*******************************************************************************/
+html,body{
+          margin:0px;
+          height:100%;
+}
+
+body {
+      background: #868686;
+      text-align: center;
+      overflow : hidden;
+      font-size: 53%;
+}
+
+/*******************************************************************************
+*                                 Container                                    *
+*******************************************************************************/
+div.container {
+    width: 1000px;
+      height: 100%;
+      background: #EFEFEF;
+      margin-right: auto;
+     margin-left: auto;
+}
+
+div.header {
+    width: 100%;
+      height: 15%;
+}
+
+div.menu {
+    width: 17%;
+      height: 75%;
+      float:left;
+}
+
+div.content {
+    width: 83%;
+    height: 75%;
+    float:right;
+    font: bold 12px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif"
+}
+
+div.footer {
+    width: 100%;
+      height: 10%;
+      float:bottom;
+}
+
+/*******************************************************************************
+*                                   Menu                                       *
+*******************************************************************************/
+
+.applemenu{
+margin: 0px 0;
+padding: 0;
+width: 99%; /*width of menu*/
+height: 98%;
+}
+
+.applemenu div.silverheader a{
+background: black url(../img/menu_over.gif) repeat-x center left;
+font: normal 12px Tahoma, "Lucida Grande", "Trebuchet MS", Helvetica, sans-serif;
+color: white;
+display: block;
+position: relative; /*To help in the anchoring of the ".statusicon" icon image*/
+width: auto;
+padding: 5px 0;
+padding-left: 8px;
+text-decoration: none;
+}
+
+
+.applemenu div.silverheader a:visited, .applemenu div.silverheader a:active{
+color: white;
+}
+
+
+.applemenu div.selected a, .applemenu div.silverheader a:hover{
+background-image: url(../img/menu.gif);
+color: white;
+}
+
+.applemenu div.submenu{ /*DIV that contains each sub menu*/
+background: white;
+padding: 5px;
+height: auto; /*Height that applies to all sub menu DIVs. A good idea when headers are toggled via "mouseover" instead of "click"*/
+}
+
+/*******************************************************************************
+*                                   Login                                      *
+*******************************************************************************/
+#login-box {
+	width:333px;
+	height: 352px;
+	padding: 58px 76px 0 76px;
+	color: #ebebeb;
+	font: 12px Arial, Helvetica, sans-serif;
+	background: url(../img/login-background.png) no-repeat left top;
+}
+
+#login-box img {
+	border:none;
+}
+
+#login-box h2 {
+	padding:0;
+	margin:0;
+	color: #ebebeb;
+	font: bold 36px "Calibri", Arial;
+}
+
+
+#login-box-name {
+	float: left;
+	display:inline;
+	width:80px;
+	text-align: right;
+	padding: 14px 10px 0 0;
+	margin:0 0 7px 0;
+}
+
+#login-box-field {
+	float: left;
+	display:inline;
+	width:230px;
+	margin:0;
+	margin:0 0 7px 0;
+}
+
+
+.form-login  {
+	width: 205px;
+	padding: 5px 3px 3px 2px;
+	border: 1px solid #0d2c52;
+	background-color:#1e4f8a;
+	font-size: 16px;
+	color: #ebebeb;
+}
+
+
+.login-box-options  {
+	clear:both;
+	padding-left:87px;
+	font-size: 11px;
+}
+
+.login-box-options a {
+	color: #ebebeb;
+	font-size: 11px;
+}
+
+
+/*******************************************************************************
+*                                   General                                    *
+*******************************************************************************/
+
+div.loader {
+	position:absolute;
+    top:40%;
+    left:50%;
+}
+
+.pageContent{
+   width:96%;
+   margin-right: auto;
+   margin-left: auto;
+}
+
+.pageTitle{
+  font: bold 20px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+  padding:5px 0px 5px 0px;
+}
+
+.fullWidthTable{
+  width:100%;
+}
+
+.button{
+   font: bold 12px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+   width: 120px;
+}
+
+.litleButton{
+   font: bold 10px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+   width: 80px;
+}
+
+.searchArea{
+   width:100%;
+}
+
+.result{
+   width:100%;
+   padding:25px 0px 10px 0px;
+   height: 300px;
+}
+
+.littleResult{
+   width:100%;
+   padding:25px 0px 10px 0px;
+   height: 100px;
+}
+
+.litleLabel{
+	font: bold 10px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+}
+
+.selectBox{
+    font: bold 12px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+    width: 160px;
+}
+
+.bigSelectBox{
+    font: bold 12px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+    width: 230px;
+}
+
+.fullWidthSelect{
+   font: bold 12px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+   width: 97%;
+}
+
+.bigInput{
+   font: bold 12px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+   width: 530px;
+}
+
+.mediumInput{
+   font: bold 12px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+   width: 300px;
+}
+
+.littleInput{
+   font: bold 12px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+   width: 230px;
+}
+
+.fullWidthInput{
+   font: bold 12px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+   width: 97%;
+}
+
+.modalConfirmation{
+	font: bold 11px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+}
+
+.modalForm{
+	font: bold 11px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+}
+
+.select{
+   font: bold 12px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+   width: 200px;
+}
+
+.mediumSelect{
+   font: bold 12px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+   width: 305px;
+}
+.bigSelect{
+   font: bold 12px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+   width: 535px;
+}
+
+.messageArea {
+    width:90%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom:10px;
+    height:18px;
+}
+
+.frontMessage{
+    margin-right: auto;
+    margin-left: auto;
+    width:60%;
+}
+
+.dataTable{
+   font: bold 11px "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+}
+

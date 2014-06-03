@@ -1,0 +1,1 @@
+<img src="${pageContext.request.contextPath}/img/footer.jpg" height ="100%" width ="100%"/>
