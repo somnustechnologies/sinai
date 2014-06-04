@@ -31,10 +31,10 @@
    </script>
 
 <div id="pageContent" class="pageContent">
-  <div id ="pageTitle" class="pageTitle">Administración del Padrón de Afiliados</div>
+  <div id ="pageTitle" class="pageTitle">Padrón de Afiliados</div>
   <div class="messageArea"></div>
   <div id="searchArea" class="searchArea">
-     <form:form modelAttribute="searchParams" id="searchUsersForm" target="ajax:result" action="usersAdministration/seachUsers.do">
+     <form:form modelAttribute="searchParams" id="searchUsersForm" target="ajax:result" action="affiliateManagement/search.do">
          <table class="fullWidthTable">
               <tr>
                  <td class="label">
@@ -56,7 +56,7 @@
                 <td></td>
                 <td align="left">
                     <form:checkbox path="onlyLocked"></form:checkbox>
-                    <span class ="litleLabel">Solo nacidos en el DF</span>
+                    <span class ="litleLabel">Solo activos</span>
                 </td>
               </tr>
               <tr>

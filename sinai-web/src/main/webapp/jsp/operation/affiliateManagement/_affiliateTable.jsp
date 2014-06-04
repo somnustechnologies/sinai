@@ -6,50 +6,172 @@
    }
 </script>
 
-<table class="styledTable" title="USUARIOS"> 
+<table class="styledTable" title="AFILIADOS"> 
   <thead> 
     <tr> 
       <th width="3%">
         <input type="checkbox"/>
       </th> 
-      <th width="3%">ID</th> 
-	  <th width="32%">NOMBRE</th> 
-	  <th width="5%">NICK</th>
-	  <th width="13%">PERFIL</th>  
-	  <th width="22%">E-MAIL</th>
-	  <th width="10%">ACCESO</th>
-	  <th width="10%">EXPIRA</th>  
-	  <th width="2%"></th>
+      <th width="50px">No.</th> 
+	  <th width="400px">NOMBRE C0MPLETO</th> 
+	  <th width="25%">LUGAR DE NACIMIENTO</th>
+	  <th width="25%">FECHA DE NACIMIENTO</th>  
+	  <th>SEXO</th>
+	  <th>EDAD</th>
+	  <th>PERTENENCIA ETNICA</th>
+	  <th>DOMICILIO</th>
+	  <th>COLONIA</th>
+	  <th>CURP</th>
+	  <th>TIEMPO DE RESIDENCIA</th>
+	  <th>OCUPACION</th>
+	  <th>ULTIMO GRADO DE ESTUDIOS</th>    
    </tr> 
   </thead> 
   <tbody> 
-    <c:forEach items="${masterUsers}" var="masterUser">
       <tr>
-        <td><input type="checkbox" value ="${masterUser.user.id}"/></td>
-		<td>${masterUser.user.id}</td>
-		<td>
-		   ${masterUser.user.name} 
-		   ${masterUser.user.lastName} 
-		   ${masterUser.user.middleName}
-		 </td>
-		 <td>${masterUser.credential.nickName}</td>
-		 <td>${masterUser.profile.name}</td>
-		 <td>${masterUser.user.mail}</td>
-		 <td>${masterUser.credential.lastLogon}</td>
-		 <td>${masterUser.credential.expireDate}</td>
-		 <td>
-		    <span class="ui-icon ui-icon-pencil" onclick="showEditUserInformation('${masterUser.user.id}');" style="float:left"></span>
-		     <c:choose>
-		      <c:when test="${masterUser.credential.locked}">
-		         <span class="ui-icon ui-icon-locked" onclick="alert('Lock');" style="float:rigth"></span>
-		      </c:when>
-		      <c:otherwise>
-		          <span class="ui-icon ui-icon-unlocked" onclick="alert('Lock');" style="float:rigth"></span>
-		      </c:otherwise>
-		    </c:choose>
-		 </td>
+        <td><input type="checkbox" value ="1"/></td>
+        <td>25847</td>
+		<td>FERNANDO RIVERA CALDERON</td>
+		<td>DISTRITO FEDERAL</td>
+		<td>01/01/1980</td>
+		<td>H</td>
+		<td>18 AÑOS</td>
+		<td>HUICHOL</td>
+		<td>CALLE 5 NUMERO 8</td>
+		<td>NUEVA AMPLIACION</td>
+		<td>CABD850625ML1</td>
+		<td>3 AÑOS</td>
+		<td>OBRERO</td>
+		<td>PREPARATORIA</td>
 	  </tr>
-    </c:forEach>
+	  <tr>
+        <td><input type="checkbox" value ="1"/></td>
+        <td>258347</td>
+		<td>SALVADOR GOMEZ BRAVO</td>
+		<td>ESTADO DE MEXICO</td>
+		<td>23/12/1992</td>
+		<td>H</td>
+		<td>30 AÑOS</td>
+		<td>N/A</td>
+		<td>CALLE 7 CIENEGAS</td>
+		<td>IMPULSORA</td>
+		<td>DFRT850625ML1</td>
+		<td>1 AÑOS</td>
+		<td>EMPLEADO</td>
+		<td>PREPARATORIA</td>
+	  </tr>
+	  <tr>
+        <td><input type="checkbox" value ="1"/></td>
+        <td>28746</td>
+		<td>SOPHIA HERNANDEZ BECERRIL</td>
+		<td>JALISCO</td>
+		<td>05/06/1970</td>
+		<td>M</td>
+		<td>84 AÑOS</td>
+		<td>N/A</td>
+		<td>ORIENTE 1234</td>
+		<td>NUEVA VALLEJO</td>
+		<td>JGHY850625ML1</td>
+		<td>10 AÑOS</td>
+		<td>MEDICO CIRUJANO</td>
+		<td>DOCTORADO</td>
+	  </tr>
+	  <tr>
+        <td><input type="checkbox" value ="1"/></td>
+        <td>98563</td>
+		<td>SANTIAGO CASTILLO BERMUDEZ</td>
+		<td>DISTRITO FEDERAL</td>
+		<td>15/05/1995</td>
+		<td>H</td>
+		<td>19 AÑOS</td>
+		<td>/N/A</td>
+		<td>ESCALERILLAS 10</td>
+		<td>METROPOLITANA</td>
+		<td>KIUY850625ML1</td>
+		<td>0 AÑOS</td>
+		<td>PROFESOR</td>
+		<td>MAESTRIA</td>
+	  </tr>
+	  <tr>
+        <td><input type="checkbox" value ="1"/></td>
+        <td>69875</td>
+		<td>DIEGO HERNANDEZ BECERRIL</td>
+		<td>JALISCO</td>
+		<td>08/06/1980</td>
+		<td>H</td>
+		<td>23 AÑOS</td>
+		<td>TZOLZIL</td>
+		<td>PRESA LA ANGOSTURA 345</td>
+		<td>POLANCO</td>
+		<td>LKSG850625ML1</td>
+		<td>62 AÑOS</td>
+		<td>PROFESIONISTA</td>
+		<td>LICENCIATURA</td>
+	  </tr>
+      <tr>
+        <td><input type="checkbox" value ="1"/></td>
+        <td>25847</td>
+		<td>FERNANDO RIVERA CALDERON</td>
+		<td>DISTRITO FEDERAL</td>
+		<td>01/01/1980</td>
+		<td>H</td>
+		<td>18 AÑOS</td>
+		<td>HUICHOL</td>
+		<td>CALLE 5 NUMERO 8</td>
+		<td>NUEVA AMPLIACION</td>
+		<td>CABD850625ML1</td>
+		<td>3 AÑOS</td>
+		<td>OBRERO</td>
+		<td>PREPARATORIA</td>
+	  </tr>
+	  <tr>
+        <td><input type="checkbox" value ="1"/></td>
+        <td>258347</td>
+		<td>SALVADOR GOMEZ BRAVO</td>
+		<td>ESTADO DE MEXICO</td>
+		<td>23/12/1992</td>
+		<td>H</td>
+		<td>30 AÑOS</td>
+		<td>N/A</td>
+		<td>CALLE 7 CIENEGAS</td>
+		<td>IMPULSORA</td>
+		<td>DFRT850625ML1</td>
+		<td>1 AÑOS</td>
+		<td>EMPLEADO</td>
+		<td>PREPARATORIA</td>
+	  </tr>
+	  <tr>
+        <td><input type="checkbox" value ="1"/></td>
+        <td>28746</td>
+		<td>SOPHIA HERNANDEZ BECERRIL</td>
+		<td>JALISCO</td>
+		<td>05/06/1970</td>
+		<td>M</td>
+		<td>84 AÑOS</td>
+		<td>N/A</td>
+		<td>ORIENTE 1234</td>
+		<td>NUEVA VALLEJO</td>
+		<td>JGHY850625ML1</td>
+		<td>10 AÑOS</td>
+		<td>MEDICO CIRUJANO</td>
+		<td>DOCTORADO</td>
+	  </tr>
+	  <tr>
+        <td><input type="checkbox" value ="1"/></td>
+        <td>98563</td>
+		<td>SANTIAGO CASTILLO BERMUDEZ</td>
+		<td>DISTRITO FEDERAL</td>
+		<td>15/05/1995</td>
+		<td>H</td>
+		<td>19 AÑOS</td>
+		<td>/N/A</td>
+		<td>ESCALERILLAS 10</td>
+		<td>METROPOLITANA</td>
+		<td>KIUY850625ML1</td>
+		<td>0 AÑOS</td>
+		<td>PROFESOR</td>
+		<td>MAESTRIA</td>
+	  </tr>
   </tbody> 
 </table> 
 <div id="pager"></div>

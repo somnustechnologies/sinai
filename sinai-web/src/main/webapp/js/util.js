@@ -256,7 +256,7 @@ function loadModalConfirmation(url, params){
 
 function loadContent(url, aid){
 	_destroy();
-	$('#content').html('<div class="loader"><img src="/Munae/img/page_loader.gif" /></div>');
+	$('#content').html('<div class="loader"><img src="/img/page_loader.gif" /></div>');
 	$("#content").load(url,{aid: aid}, function(response, status, xhr) {
 		  if (status == "error") {
 		    $("#content").load("error/pageNotFound.do",{errMsg: xhr.statusText});
@@ -265,7 +265,7 @@ function loadContent(url, aid){
 }
 
 function load(url, containterId){
-	$('#' + containterId).html('<div class="loader"><img src="/Munae/img/page_loader.gif" /></div>');
+	$('#' + containterId).html('<div class="loader"><img src="/img/page_loader.gif" /></div>');
 	$('#' + containterId).load(url,{}, function(response, status, xhr) {
 		  if (status == "error") {
 		    $("#content").load("error/pageNotFound.do",{errMsg: xhr.statusText});
