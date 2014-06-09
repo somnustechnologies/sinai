@@ -3,13 +3,14 @@ package gob.df.sds.sinai.web.dao.security.mapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.jdbc.core.RowMapper;
+
 import gob.df.sds.sinai.web.bean.vo.MasterUser;
 import gob.df.sds.sinai.web.bean.vo.Profile;
 import gob.df.sds.sinai.web.bean.vo.UserCredential;
 import gob.df.sds.sinai.web.bean.vo.User;
-import gob.df.sds.sinai.web.model.GenericMapper;
 
-public class MasterUserMapper extends GenericMapper {
+public class MasterUserMapper implements RowMapper {
 
 	public  Object mapRow(ResultSet rs, int rowNum) throws SQLException {
 		MasterUser masterUser = new MasterUser();

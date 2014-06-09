@@ -1,8 +1,8 @@
 package gob.df.sds.sinai.web.bean.vo;
 
-import gob.df.sds.sinai.web.model.GenericBean;
+import gob.df.sds.sinai.common.bean.AbstractBean;
 
-public class MasterUser extends GenericBean{
+public class MasterUser extends AbstractBean {
 	
 	private User user;
 	private UserCredential credential;

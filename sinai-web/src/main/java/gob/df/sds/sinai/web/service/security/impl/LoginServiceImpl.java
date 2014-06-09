@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import gob.df.sds.sinai.common.service.AbstractService;
+import gob.df.sds.sinai.common.service.core.EncryptionService;
 import gob.df.sds.sinai.web.bean.vo.Authority;
 import gob.df.sds.sinai.web.bean.vo.MasterModule;
 import gob.df.sds.sinai.web.bean.vo.Module;
@@ -12,11 +14,9 @@ import gob.df.sds.sinai.web.bean.vo.Session;
 import gob.df.sds.sinai.web.bean.vo.UserCredential;
 import gob.df.sds.sinai.web.bean.vo.User;
 import gob.df.sds.sinai.web.dao.security.LoginDAO;
-import gob.df.sds.sinai.web.model.GenericService;
-import gob.df.sds.sinai.web.service.security.EncryptionService;
 import gob.df.sds.sinai.web.service.security.LoginService;
 
-public class LoginServiceImpl extends GenericService implements LoginService{
+public class LoginServiceImpl extends AbstractService implements LoginService{
 	
 	
   private LoginDAO dao;

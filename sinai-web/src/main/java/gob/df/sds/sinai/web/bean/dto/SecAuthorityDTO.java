@@ -1,9 +1,9 @@
 package gob.df.sds.sinai.web.bean.dto;
 
-import gob.df.sds.sinai.web.model.GenericBean;
+import gob.df.sds.sinai.common.bean.AbstractBean;
 
 
-public class SecAuthorityDTO extends GenericBean{
+public class SecAuthorityDTO extends AbstractBean{
 	
 	private Integer id;
 	private Integer modelId;

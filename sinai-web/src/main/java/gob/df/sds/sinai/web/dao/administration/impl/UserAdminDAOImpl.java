@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 
+import gob.df.sds.sinai.common.dao.AbstractDAO;
 import gob.df.sds.sinai.web.bean.criteria.UserCriteria;
 import gob.df.sds.sinai.web.bean.vo.MasterUser;
 import gob.df.sds.sinai.web.bean.vo.Profile;
@@ -12,15 +13,31 @@ import gob.df.sds.sinai.web.bean.vo.UserCredential;
 import gob.df.sds.sinai.web.bean.vo.UserProfile;
 import gob.df.sds.sinai.web.bean.vo.User;
 import gob.df.sds.sinai.web.dao.administration.UserAdminDAO;
-import gob.df.sds.sinai.web.dao.common.impl.CommonDAOImpl;
 import gob.df.sds.sinai.web.dao.security.mapper.MasterUserMapper;
-
 import static gob.df.sds.sinai.web.constant.Literals.*;
 
 @SuppressWarnings("unchecked")
-public class UserAdminDAOImpl extends CommonDAOImpl 
-                 implements UserAdminDAO {
+public class UserAdminDAOImpl extends AbstractDAO implements UserAdminDAO {
 	
+	
+  public List<Profile> getProfiles(){
+	String sqlQuery = "SELECT * FROM SEC_PROFILES";
+	return (List<Profile>) getJdbcTemplate().query(sqlQuery
+				            , getMapperFor(Profile.class));
+  }
+
+  public MasterUser getMasterUser(Integer userId){
+	String sqlQuery = "SELECT * " 
+		            + "FROM SEC_USERS USR, SEC_USER_CREDENTIALS CRED, " 
+	                   + "     SEC_PROFILES PFL, SEC_USER_PROFILES USR_PFL "
+	                   + "WHERE USR.ID = ? " 
+	                   + "      AND CRED.USER_ID = USR.ID "
+	                   + "      AND USR_PFL.USER_ID = USR.ID "
+	                   + "      AND USR_PFL.PROFILE_ID = PFL.ID";
+	return (MasterUser) getJdbcTemplate().queryForObject(sqlQuery
+		          , new Object[]{userId},new MasterUserMapper());
+  }
+	  
   public List<MasterUser> searchMasterUsers(UserCriteria searchParams) {
     String sqlQuery = "SELECT * FROM SEC_USERS USR, SEC_USER_CREDENTIALS CRED, " 
 		            + "              SEC_PROFILES PFL, SEC_USER_PROFILES USR_PFL "

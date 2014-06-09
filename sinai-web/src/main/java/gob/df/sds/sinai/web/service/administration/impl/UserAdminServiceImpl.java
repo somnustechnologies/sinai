@@ -4,18 +4,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import gob.df.sds.sinai.common.exception.core.SystemException;
+import gob.df.sds.sinai.common.service.AbstractService;
+import gob.df.sds.sinai.common.service.core.EncryptionService;
+import gob.df.sds.sinai.common.util.Utilities;
 import gob.df.sds.sinai.web.bean.criteria.UserCriteria;
 import gob.df.sds.sinai.web.bean.vo.MasterUser;
 import gob.df.sds.sinai.web.bean.vo.Profile;
 import gob.df.sds.sinai.web.dao.administration.UserAdminDAO;
-import gob.df.sds.sinai.web.exception.CommonException;
 import gob.df.sds.sinai.web.service.administration.UserAdminService;
-import gob.df.sds.sinai.web.service.security.EncryptionService;
-import gob.df.sds.sinai.web.util.Utilities;
-
 import static gob.df.sds.sinai.web.constant.Literals.*;
 
-public class UserAdminServiceImpl implements UserAdminService{
+public class UserAdminServiceImpl extends AbstractService 
+                                  implements UserAdminService {
 	
   private UserAdminDAO dao;
   private EncryptionService encrypter;
@@ -51,7 +52,7 @@ public class UserAdminServiceImpl implements UserAdminService{
 	}
   }
   
-  public void insertMasterUser(MasterUser masterUser) throws CommonException{
+  public void insertMasterUser(MasterUser masterUser) throws SystemException {
 	  String randomPassword =  Utilities.getRandomString(8);
 	  masterUser.getCredential().setAttemps(0);
 	  masterUser.getCredential().setExpireDate(new Date());

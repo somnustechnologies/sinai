@@ -2,15 +2,15 @@ package gob.df.sds.sinai.web.dao.security.impl;
 
 import java.util.List;
 
+import gob.df.sds.sinai.common.dao.AbstractDAO;
 import gob.df.sds.sinai.web.bean.vo.Authority;
 import gob.df.sds.sinai.web.bean.vo.Module;
 import gob.df.sds.sinai.web.bean.vo.Profile;
 import gob.df.sds.sinai.web.bean.vo.UserCredential;
 import gob.df.sds.sinai.web.bean.vo.User;
 import gob.df.sds.sinai.web.dao.security.LoginDAO;
-import gob.df.sds.sinai.web.model.GenericDAO;
 
-public class LoginDAOImpl extends GenericDAO implements LoginDAO {
+public class LoginDAOImpl extends AbstractDAO implements LoginDAO {
   
   @SuppressWarnings("unchecked")
   public UserCredential getFullCredential(UserCredential credential) {

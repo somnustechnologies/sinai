@@ -1,10 +1,10 @@
 package gob.df.sds.sinai.web.bean.dto;
 
+import gob.df.sds.sinai.common.bean.AbstractBean;
+
 import java.util.Date;
 
-import gob.df.sds.sinai.web.model.GenericBean;
-
-public class SecUserCredentialDTO extends GenericBean {
+public class SecUserCredentialDTO extends AbstractBean {
 	
 	private Integer userId;
 	private String nickName;

@@ -8,16 +8,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import gob.df.sds.sinai.common.controller.AbstractController;
 import gob.df.sds.sinai.web.bean.vo.UserCredential;
-import gob.df.sds.sinai.web.constant.Attr;
-import gob.df.sds.sinai.web.constant.Maps;
 import gob.df.sds.sinai.web.constant.Msg;
-import gob.df.sds.sinai.web.constant.Views;
-import gob.df.sds.sinai.web.model.GenericController;
 import gob.df.sds.sinai.web.service.security.LoginService;
 
 @Controller
-public class LoginController extends GenericController {
+public class LoginController extends AbstractController {
 	
   private LoginService service;
   
@@ -25,13 +22,13 @@ public class LoginController extends GenericController {
 	this.service = service;
   }
 
-  @RequestMapping(Maps.SETUP_SIGN_UP)
+  @RequestMapping("searchParams")
   public String  setupSingUp(ModelMap model){
-	 model.addAttribute(Attr.REQ_USER_CREDENTIALS, new UserCredential()); 
-     return Views.LOGIN;
+	 model.addAttribute("userCredential", new UserCredential()); 
+     return "security/login";
   }
   
-  @RequestMapping(Maps.SIGN_UP)
+  @RequestMapping("/singUp.do")
   public String singUp(@ModelAttribute UserCredential userCredential
 		     , ModelMap model, HttpSession session) throws Exception {
 	UserCredential credential = service.getFullCredential(userCredential);
@@ -44,13 +41,12 @@ public class LoginController extends GenericController {
 		errorMessage = Msg.BAD_PASSWORD;
 	}
 	if(errorMessage != null){
-	  model.addAttribute(Attr.REQ_ERR_MESSAGE, errorMessage);
-	  model.addAttribute(Attr.REQ_USER_CREDENTIALS, userCredential); 
-	  return Views.LOGIN;
+	  model.addAttribute("errMessage", errorMessage);
+	  model.addAttribute("userCredential", userCredential); 
+	  return "security/login";
 	}
-	session.setAttribute(Attr.SES_SESSION, service.getSession(credential
-			                                             .getUserId()));
-    return Views.CONTAINER;
+	session.setAttribute("session", service.getSession(credential.getUserId()));
+    return "layout/container";
   }
 
 }

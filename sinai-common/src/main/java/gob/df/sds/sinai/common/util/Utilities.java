@@ -1,6 +1,4 @@
-package gob.df.sds.sinai.web.util;
-
-import static gob.df.sds.sinai.web.constant.Literals.*;
+package gob.df.sds.sinai.common.util;
 
 import java.util.Date;
 import java.util.Random;
@@ -13,14 +11,14 @@ private static String validAlfaNumericCharacters = "ABCDEFGHIJKLMNOPQRSTWXYZabcd
 	public static String formatLeftZero(String string, int length){
 		String formatedString = string;
 		for(int i=string.length();i<length;i++){
-			formatedString = NBR_ZERO + formatedString;
+			formatedString = "0" + formatedString;
 		}
 		return formatedString;
 	}
 	
 	public static String notNull(Object string){
 		if(string == null){
-			return STR_EMPTY;
+			return "";
 		}
 		return string.toString();
 	}

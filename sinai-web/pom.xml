@@ -10,62 +10,23 @@
      <org.springframework.version>4.0.5.RELEASE</org.springframework.version>
   </properties>
   
+  
   <dependencies>
+      
     <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-context</artifactId>
-        <version>${org.springframework.version}</version>
+        <groupId>gob.df.sds</groupId>
+        <artifactId>sinai-common</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </dependency>
     
     <dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>spring-context-support</artifactId>
-	  <version>${org.springframework.version}</version>
-    </dependency>
-    
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-tx</artifactId>
-        <version>${org.springframework.version}</version>
-    </dependency>
-    
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-jdbc</artifactId>
-        <version>${org.springframework.version}</version>
-    </dependency>
-    
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-web</artifactId>
-        <version>${org.springframework.version}</version>
-    </dependency>
-    
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-webmvc</artifactId>
-        <version>${org.springframework.version}</version>
-    </dependency>
-    
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-webmvc</artifactId>
-        <version>${org.springframework.version}</version>
-    </dependency>
-    
-    <dependency>
-	   <groupId>javax.servlet</groupId>
-	   <artifactId>jstl</artifactId>
-	   <version>1.2</version>
-    </dependency>
-
-    <dependency>
-	<groupId>commons-dbcp</groupId>
-	<artifactId>commons-dbcp</artifactId>
-	<version>1.4</version>
-</dependency>
-
-</dependencies>
+            <groupId>gob.df.sds</groupId>
+            <artifactId>sinai-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>import</scope>
+            <type>pom</type>
+        </dependency>   
+    </dependencies>
 
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>

@@ -6,19 +6,18 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import gob.df.sds.sinai.common.controller.core.ErrorController;
 import gob.df.sds.sinai.web.bean.vo.Authority;
 import gob.df.sds.sinai.web.bean.vo.MasterModule;
 import gob.df.sds.sinai.web.bean.vo.Session;
-import gob.df.sds.sinai.web.constant.Attr;
 import gob.df.sds.sinai.web.constant.Msg;
-import gob.df.sds.sinai.web.model.GenericHandlerInterceptor;
-import gob.df.sds.sinai.web.view.common.ErrorController;
 
 
 import static gob.df.sds.sinai.web.constant.Literals.*;
 
-@SuppressWarnings("unchecked")
-public class RequestInterceptor extends GenericHandlerInterceptor {
+public class RequestInterceptor extends HandlerInterceptorAdapter {
 	
   private static List<? extends Class<?>> byPassHandlers;
   
@@ -33,7 +32,7 @@ public class RequestInterceptor extends GenericHandlerInterceptor {
     Session session = null;
     if(!byPassHandlers.contains(handler.getClass())){
        if(request.getSession() != null){
-         session = (Session) request.getSession().getAttribute(Attr.SES_SESSION);
+         session = (Session) request.getSession().getAttribute("session");
 	     if(!verifySession(session)){
 		   errorMessage = Msg.BAD_SESSION;
 	     } else if(!verifyReferer(request)){
@@ -48,7 +47,7 @@ public class RequestInterceptor extends GenericHandlerInterceptor {
         killSession(request);
         response.sendRedirect("" + "?errMsg=" + errorMessage);
       }
-      request.getSession().setAttribute(Attr.SES_SESSION, session);
+      request.getSession().setAttribute("session", session);
     }
 	return true;
   }
@@ -89,7 +88,7 @@ public class RequestInterceptor extends GenericHandlerInterceptor {
   }
   
   private void killSession(HttpServletRequest request){
-	  request.getSession().setAttribute(Attr.SES_SESSION, null);
+	  request.getSession().setAttribute("session", null);
   }
 
 

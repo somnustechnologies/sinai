@@ -1,15 +1,15 @@
-package gob.df.sds.sinai.web.service.security.impl;
+package gob.df.sds.sinai.common.service.core.impl;
+
+import gob.df.sds.sinai.common.exception.core.SystemException;
+import gob.df.sds.sinai.common.service.AbstractService;
+import gob.df.sds.sinai.common.service.core.EncryptionService;
 
 import java.security.MessageDigest;
 
-import gob.df.sds.sinai.web.exception.CommonException;
-import gob.df.sds.sinai.web.model.GenericService;
-import gob.df.sds.sinai.web.service.security.EncryptionService;
-
 //import org.apache.commons.codec.binary.Base64;
 
-public class EncryptionServiceImpl extends GenericService 
-                               implements EncryptionService {
+public class EncryptionServiceImpl extends AbstractService 
+                            implements EncryptionService {
   private String algorithm;
 	
   public void setAlgorithm(String algorithm) {
@@ -17,11 +17,11 @@ public class EncryptionServiceImpl extends GenericService
   }
 	
   public Boolean compare(String plainInput, String encryptedInput) 
-                                          throws CommonException {
+                                          throws SystemException {
     return encryptedInput.equals(encrypt(plainInput));
   }
 
-  public String encrypt(String plainInput) throws CommonException {
+  public String encrypt(String plainInput) throws SystemException {
     MessageDigest digester;
     String encyptedOutput ;
     try{
@@ -30,7 +30,7 @@ public class EncryptionServiceImpl extends GenericService
        digester.update(plainInput.getBytes());
        //encyptedOutput = new String((new Base64()).encode(digester.digest()));
     } catch(Exception e){
-       throw new CommonException(e);
+       throw new SystemException(e);
     }
     //return encyptedOutput;
     return null;

@@ -7,20 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import gob.df.sds.sinai.common.controller.AbstractController;
+import gob.df.sds.sinai.common.exception.core.SystemException;
 import gob.df.sds.sinai.web.bean.criteria.UserCriteria;
 import gob.df.sds.sinai.web.bean.vo.MasterUser;
-import gob.df.sds.sinai.web.constant.Attr;
-import gob.df.sds.sinai.web.constant.Maps;
 import gob.df.sds.sinai.web.constant.Msg;
-import gob.df.sds.sinai.web.constant.Views;
-import gob.df.sds.sinai.web.exception.CommonException;
 import gob.df.sds.sinai.web.service.administration.UserAdminService;
-
 import static gob.df.sds.sinai.web.constant.Literals.*;
 
 @Controller
-@SessionAttributes(Attr.SES_LAST_SEARCH_PARAMS)
-public class UserAdministrationController {
+@SessionAttributes("lastSearchParams")
+public class UserAdministrationController  extends AbstractController {
 	
   private UserAdminService service;
 	
@@ -28,72 +25,69 @@ public class UserAdministrationController {
 	this.service = service;
   }
 
-  @RequestMapping(Maps.SETUP_USERS)
+  @RequestMapping("/usersAdministration.do")
   public String  setupSearchUser(ModelMap model){
-    model.addAttribute(Attr.REQ_PROFILES, service.getProfiles()); 
-    model.addAttribute(Attr.REQ_SEARCH_PARAMS, new UserCriteria());
-    return Views.USERS;
+    model.addAttribute("profiles", service.getProfiles()); 
+    model.addAttribute("searchParams", new UserCriteria());
+    return "administration/user/searchUser";
   }
   
-  @RequestMapping(Maps.SEARCH_USERS)
-  public String  searchUser(@ModelAttribute(Attr.REQ_SEARCH_PARAMS) UserCriteria
-		                                         searchParams, ModelMap model) {
-	model.addAttribute(Attr.SES_LAST_SEARCH_PARAMS,searchParams);
-    model.addAttribute(Attr.REQ_MASTER_USERS, service
-    		                                  .searchMasterUsers(searchParams)); 
-    return Views.USERS_TABLE;
+  @RequestMapping("/usersAdministration/seachUsers.do")
+  public String  searchUser(@ModelAttribute("searchParams") UserCriteria
+		                                 searchParams, ModelMap model) {
+	model.addAttribute("lastSearchParams", searchParams);
+    model.addAttribute("masterUsers", service.searchMasterUsers(searchParams)); 
+    return "administration/user/_userTable";
   }
 
-  @RequestMapping(Maps.SETUP_DELETE_USER)
+  @RequestMapping("/usersAdministration/setupDeleteUser.do")
   public String  setupDeleteUser(ModelMap model) {
-	  return Views.DELETE_USER;
+	  return "administration/user/_deleteUser";
   }
   
-  @RequestMapping(Maps.DELETE_USERS)
+  @RequestMapping("/usersAdministration/deleteUsers.do")
   public String  deleteUser(@RequestParam String chainIds, ModelMap model) {
 	service.deleteMasterUsers(chainIds);
-	model.addAttribute(Attr.REQ_INF_MESSAGE, Msg.DELETE_USERS_OK);
-	return searchUser((UserCriteria) model.get(Attr.SES_LAST_SEARCH_PARAMS)
-			                                                      , model);
+	model.addAttribute("infMessage", Msg.DELETE_USERS_OK);
+	return searchUser((UserCriteria) model.get("lastSearchParams"), model);
   } 
   
-  @RequestMapping(Maps.SETUP_CREATE_USER)
+  @RequestMapping("/usersAdministration/setupCreateUser.do")
   public String  setupCreateUser(ModelMap model) {
-	  model.addAttribute(Attr.REQ_PROFILES, service.getProfiles()); 
-	  model.addAttribute(Attr.REQ_NEW_MASTER_USER, new MasterUser());
-	  return Views.CREATE_USER;
+	  model.addAttribute("profiles", service.getProfiles()); 
+	  model.addAttribute("newMasterUser", new MasterUser());
+	  return "administration/user/_createUser";
   }
   
-  @RequestMapping(Maps.CREATE_USER)
+  @RequestMapping("/usersAdministration/createUser.do")
   public String  CreateUser(@ModelAttribute MasterUser newMasterUser
-		                    , ModelMap model) throws CommonException {
+		                  , ModelMap model) throws SystemException {
 	  UserCriteria searchUserParams = new UserCriteria(SEARCH_TYPE_ID_MAIL
 			                         , newMasterUser.getUser().getMail());
 	  if(service.existUserMail(newMasterUser.getUser().getMail())){
-		  model.addAttribute(Attr.REQ_ERR_MESSAGE, Msg.BAD_USER_MAIL);
+		  model.addAttribute("errMessage", Msg.BAD_USER_MAIL);
 	  } else if(service.existUserNickName(newMasterUser.getCredential()
 			                                          .getNickName())){
-		  model.addAttribute(Attr.REQ_ERR_MESSAGE, Msg.BAD_USER_NICK_NAME);
+		  model.addAttribute("errMessage", Msg.BAD_USER_NICK_NAME);
 	  } else {
 	      service.insertMasterUser(newMasterUser);
-	      model.addAttribute(Attr.REQ_INF_MESSAGE, Msg.ADD_USER_OK);
+	      model.addAttribute("infMessage", Msg.ADD_USER_OK);
 	  }
 	  return searchUser(searchUserParams, model);
   }
   
-  @RequestMapping(Maps.SETUP_UPDATE_USER_INFORMATION)
+  @RequestMapping("/usersAdministration/setupUpdateUserInformation.do")
   public String  setupUpdateUser(@RequestParam Integer userId, ModelMap model) {
-	  model.addAttribute(Attr.REQ_MASTER_USER, service.getMasterUser(userId));
-	  model.addAttribute(Attr.REQ_PROFILES, service.getProfiles()); 
-	  return Views.EDIT_USER;
+	  model.addAttribute("masterUser", service.getMasterUser(userId));
+	  model.addAttribute("profiles", service.getProfiles()); 
+	  return "administration/user/_editUserInformation";
   }
   
-  @RequestMapping(Maps.UPDATE_USER_INFORMATION)
+  @RequestMapping("/usersAdministration/updateUserInformation.do")
   public String  updateUser(@ModelAttribute MasterUser masterUser, ModelMap model) {
 	  service.updateMasterUserInformation(masterUser);
-	  model.addAttribute(Attr.REQ_INF_MESSAGE, Msg.UPDATE_USER_OK);
-	  return searchUser((UserCriteria) model.get(Attr.SES_LAST_SEARCH_PARAMS)
-                                                                    , model);
+	  model.addAttribute("infMessage", Msg.UPDATE_USER_OK);
+	  return searchUser((UserCriteria) model.get("lastSearchParams"), model);
   }
 
 }
