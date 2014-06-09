@@ -296,7 +296,7 @@ function hideMessages(){
 }
 
 function printMessage(message, error) {
-	$(".messageArea").load("jsp/common/_frontMessage.jsp", {infMessage:message, errMessage:error});
+	$(".messageArea").load("jsp/layout/message/_frontMessage.jsp", {infMessage:message, errMessage:error});
 }
 
 function actionConfirmed(url,target,params, modalConfirmation){

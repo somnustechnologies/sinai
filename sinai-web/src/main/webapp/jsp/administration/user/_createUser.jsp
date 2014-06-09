@@ -1,4 +1,4 @@
-<%@ include file="/jsp/common/_pageHeaders.jsp"%>
+<%@ include file="/jsp/layout/container/_pageHeaders.jsp"%>
 
 <form:form  title="Agregar" modelAttribute="newMasterUser" id="newMasterUserForm" class="styledModalForm custom[width:450]" target="ajax:result" action="usersAdministration/createUser.do">
    <table>

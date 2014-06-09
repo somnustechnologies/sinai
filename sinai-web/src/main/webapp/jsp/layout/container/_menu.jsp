@@ -1,4 +1,4 @@
-<%@ include file="/jsp/common/_pageHeaders.jsp"%>
+<%@ include file="/jsp/layout/container/_pageHeaders.jsp"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>
 
 <div class="applemenu">

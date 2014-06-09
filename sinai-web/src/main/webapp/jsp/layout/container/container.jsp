@@ -4,23 +4,23 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
       <title>Sistema Integral de Administracion Iztacalco</title>
-      <%@ include file="/jsp/common/_includes.jsp"%>
-      <%@ include file="/jsp/common/_pageHeaders.jsp"%>
+      <%@ include file="/jsp/layout/container/_includes.jsp"%>
+      <%@ include file="/jsp/layout/container/_pageHeaders.jsp"%>
       
    </head>
    <body onclick="hideMessages()">
       <div class="container">
          <div class="header">
-           <%@ include file="/jsp/layout/_header.jsp"%>
+           <%@ include file="/jsp/layout/container/_header.jsp"%>
          </div>
          <div class="menu">
-           <%@ include file="/jsp/layout/_menu.jsp" %>
+           <%@ include file="/jsp/layout/container/_menu.jsp" %>
          </div>
          <div class="content" id="content">
             <%@ include file="/jsp/security/welcome.jsp"%>
          </div>
          <div class="footer">
-           <%@ include file="/jsp/layout/_footer.jsp"%>
+           <%@ include file="/jsp/layout/container/_footer.jsp"%>
          </div>
          
       </div>
