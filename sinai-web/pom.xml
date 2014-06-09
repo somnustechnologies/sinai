@@ -46,6 +46,25 @@
         <artifactId>spring-webmvc</artifactId>
         <version>${org.springframework.version}</version>
     </dependency>
+    
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    
+    <dependency>
+	   <groupId>javax.servlet</groupId>
+	   <artifactId>jstl</artifactId>
+	   <version>1.2</version>
+    </dependency>
+
+    <dependency>
+	<groupId>commons-dbcp</groupId>
+	<artifactId>commons-dbcp</artifactId>
+	<version>1.4</version>
+</dependency>
+
 </dependencies>
 
   <build>
@@ -68,6 +87,11 @@
           <target>1.7</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>com.google.appengine</groupId>
+        <artifactId>appengine-maven-plugin</artifactId>
+        <version>1.9.6</version>
+     </plugin>
     </plugins>
   </build>
 </project>
