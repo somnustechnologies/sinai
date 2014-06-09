@@ -11,7 +11,7 @@ public class ErrorController extends AbstractController{
 	
   @RequestMapping("/error/pageNotFound.do")
   public String  pageNotFound(ModelMap model){
-    return "common/pageNotFound";
+    return "layout/error/pageNotFound";
   }
 
 }
