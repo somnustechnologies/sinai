@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import gob.df.sds.sinai.common.controller.AbstractController;
 import gob.df.sds.sinai.web.bean.vo.UserCredential;
-import gob.df.sds.sinai.web.constant.Msg;
 import gob.df.sds.sinai.web.service.security.LoginService;
 
 @Controller
@@ -34,11 +33,11 @@ public class LoginController extends AbstractController {
 	UserCredential credential = service.getFullCredential(userCredential);
 	String errorMessage = null;
 	if(credential == null){
-		errorMessage = Msg.BAD_USER;
+		errorMessage = "err.badUser";
 	} else if(credential.getLocked()){
-		errorMessage = Msg.LOCKED_USER;
+		errorMessage = "err.lockedUser";
 	} else if(!service.isPasswordCorrect(userCredential, credential)){
-		errorMessage = Msg.BAD_PASSWORD;
+		errorMessage = "err.badPassword";
 	}
 	if(errorMessage != null){
 	  model.addAttribute("errMessage", errorMessage);

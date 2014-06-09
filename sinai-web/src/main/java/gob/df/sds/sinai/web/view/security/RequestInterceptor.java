@@ -12,7 +12,6 @@ import gob.df.sds.sinai.common.controller.core.ErrorController;
 import gob.df.sds.sinai.web.bean.vo.Authority;
 import gob.df.sds.sinai.web.bean.vo.MasterModule;
 import gob.df.sds.sinai.web.bean.vo.Session;
-import gob.df.sds.sinai.web.constant.Msg;
 
 
 import static gob.df.sds.sinai.web.constant.Literals.*;
@@ -34,14 +33,14 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
        if(request.getSession() != null){
          session = (Session) request.getSession().getAttribute("session");
 	     if(!verifySession(session)){
-		   errorMessage = Msg.BAD_SESSION;
+		   errorMessage = "err.badSession";
 	     } else if(!verifyReferer(request)){
-		   errorMessage = Msg.BAD_ACCESS_TYPE;
+		   errorMessage = "err.accessTypeInvalid";
 	     } else if(!verifyAuthority(session, request)){
-		  errorMessage = Msg.BAD_AUTHORITY;
+		  errorMessage = "err.badAuthority";
 	     } 
 	  } else {
-		 errorMessage = Msg.BAD_SESSION;
+		 errorMessage = "err.badSession";
 	  }
       if(errorMessage != null){
         killSession(request);

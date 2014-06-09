@@ -11,7 +11,6 @@ import gob.df.sds.sinai.common.controller.AbstractController;
 import gob.df.sds.sinai.common.exception.core.SystemException;
 import gob.df.sds.sinai.web.bean.criteria.UserCriteria;
 import gob.df.sds.sinai.web.bean.vo.MasterUser;
-import gob.df.sds.sinai.web.constant.Msg;
 import gob.df.sds.sinai.web.service.administration.UserAdminService;
 import static gob.df.sds.sinai.web.constant.Literals.*;
 
@@ -48,7 +47,7 @@ public class UserAdministrationController  extends AbstractController {
   @RequestMapping("/usersAdministration/deleteUsers.do")
   public String  deleteUser(@RequestParam String chainIds, ModelMap model) {
 	service.deleteMasterUsers(chainIds);
-	model.addAttribute("infMessage", Msg.DELETE_USERS_OK);
+	model.addAttribute("infMessage", "msg.deleteOK");
 	return searchUser((UserCriteria) model.get("lastSearchParams"), model);
   } 
   
@@ -65,13 +64,13 @@ public class UserAdministrationController  extends AbstractController {
 	  UserCriteria searchUserParams = new UserCriteria(SEARCH_TYPE_ID_MAIL
 			                         , newMasterUser.getUser().getMail());
 	  if(service.existUserMail(newMasterUser.getUser().getMail())){
-		  model.addAttribute("errMessage", Msg.BAD_USER_MAIL);
+		  model.addAttribute("errMessage", "err.duplicateMail");
 	  } else if(service.existUserNickName(newMasterUser.getCredential()
 			                                          .getNickName())){
-		  model.addAttribute("errMessage", Msg.BAD_USER_NICK_NAME);
+		  model.addAttribute("errMessage", "err.duplicateNick");
 	  } else {
 	      service.insertMasterUser(newMasterUser);
-	      model.addAttribute("infMessage", Msg.ADD_USER_OK);
+	      model.addAttribute("infMessage", "msg.insertOK");
 	  }
 	  return searchUser(searchUserParams, model);
   }
@@ -86,7 +85,7 @@ public class UserAdministrationController  extends AbstractController {
   @RequestMapping("/usersAdministration/updateUserInformation.do")
   public String  updateUser(@ModelAttribute MasterUser masterUser, ModelMap model) {
 	  service.updateMasterUserInformation(masterUser);
-	  model.addAttribute("infMessage", Msg.UPDATE_USER_OK);
+	  model.addAttribute("infMessage", "msg.updateOK");
 	  return searchUser((UserCriteria) model.get("lastSearchParams"), model);
   }
 
