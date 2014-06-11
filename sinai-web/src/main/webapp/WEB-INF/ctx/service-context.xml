@@ -25,7 +25,7 @@
          </property>
       </bean>
 
-      <bean id="encryptionService" class="gob.df.sds.sinai.web.service.security.impl.EncryptionServiceImpl">
+      <bean id="encryptionService" class="gob.df.sds.sinai.common.service.core.impl.EncryptionServiceImpl">
          <property name="algorithm" value="SHA-1" />
        </bean>
        

@@ -19,9 +19,9 @@
    </bean>
    
    <!--::::::::::::::::::::::::::::::: interceptors :::::::::::::::::::::::::::::::-->   
-<!--     <mvc:interceptors>     -->
-<!--         <bean class="gob.df.sds.sinai.web.view.security.RequestInterceptor"/> -->
-<!--     </mvc:interceptors> -->
+     <mvc:interceptors>   
+         <bean class="gob.df.sds.sinai.web.view.security.RequestInterceptor"/>
+     </mvc:interceptors>
 
 
    <!--::::::::::::::::::::::::::::::: Controllers :::::::::::::::::::::::::::::::-->
@@ -29,7 +29,7 @@
       <property name="service" ref="loginService" />
    </bean>
    
-   <bean class="gob.df.sds.sinai.web.view.common.ErrorController">
+   <bean class="gob.df.sds.sinai.common.controller.core.ErrorController">
    </bean>
    
    <bean class="gob.df.sds.sinai.web.view.administration.UserAdministrationController">
